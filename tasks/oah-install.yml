@@ -1,0 +1,13 @@
+---
+- debug:
+    msg: "Ansible role for OWASP Threat Dragon"
+  
+- name: "Downloading package"
+  get_url:
+    url: "{{ threat_dragon_artifact_url }}"
+    dest: '{{ threat_dragon_download_path }}/{{ threat_dragon_deb_file }}'
+
+- name: Installing OWASP Threat Dragon
+  become: yes
+  apt:
+    deb: '{{ threat_dragon_download_path }}/{{ threat_dragon_deb_file }}'

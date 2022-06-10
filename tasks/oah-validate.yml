@@ -1,0 +1,14 @@
+---
+- name: Validate Installation
+  command: dpkg-query -l "{{ threat_dragon_app_name }}"
+  register: package_check
+
+- name: Printing validate message
+  debug: 
+    msg: "Package is installed"
+  when: package_check is succeeded
+
+- name: Printing validate message
+  debug:
+    msg: "Package not found"
+  when: package_check.stdout.find('no packages found') != -1 

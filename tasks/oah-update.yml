@@ -1,0 +1,5 @@
+---
+- name: Update Threat Dragon to the latest version
+  apt:
+    name: "{{ threat_dragon_app_name }}"
+    state: latest

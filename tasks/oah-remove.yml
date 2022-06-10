@@ -1,0 +1,14 @@
+---
+- name: Uninstalling owasp threat dragon
+  become: yes
+  apt:
+    name: "{{ threat_dragon_app_name }}"
+    state: absent
+    purge: yes
+    autoremove: yes
+    autoclean: yes
+  
+- name: Removing .deb file
+  file:
+    state: absent
+    path: '{{ threat_dragon_download_path }}/{{ threat_dragon_deb_file }}'
